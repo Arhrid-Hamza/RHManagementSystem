@@ -1,0 +1,78 @@
+﻿﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="page-container">
+    <div class="page-header">
+        <h2>Admin Dashboard</h2>
+        <a href="/AdminDashboard/Logout">Logout</a>
+    </div>
+    <h3>Welcome, @Context.Session.GetString("UserName")</h3>
+
+    <h4>Management Overview</h4>
+    <canvas id="overviewChart" width="400" height="200"></canvas>
+
+    <div class="dashboard-cards">
+        <div class="dashboard-card">
+            <div class="dashboard-card-icon">👥</div>
+            <h4>Users</h4>
+            <a href="/UsersMVC">Manage Users</a>
+            <a href="/UsersMVC/Create">Add User</a>
+        </div>
+        <div class="dashboard-card">
+            <div class="dashboard-card-icon">👨‍💼</div>
+            <h4>Employees</h4>
+            <a href="/EmployeesMVC">Manage Employees</a>
+            <a href="/EmployeesMVC/Create">Add Employee</a>
+        </div>
+        <div class="dashboard-card">
+            <div class="dashboard-card-icon">🏢</div>
+            <h4>Departments</h4>
+            <a href="/DepartmentsMVC">Manage Departments</a>
+            <a href="/DepartmentsMVC/Create">Add Department</a>
+        </div>
+        <div class="dashboard-card">
+            <div class="dashboard-card-icon">📁</div>
+            <h4>Projects</h4>
+            <a href="/ProjectsMVC">Manage Projects</a>
+            <a href="/ProjectsMVC/Create">Add Project</a>
+        </div>
+        <div class="dashboard-card">
+            <div class="dashboard-card-icon">📊</div>
+            <h4>Reports</h4>
+            <a href="/ReportsMVC">View Reports</a>
+            <a href="/ReportsMVC/Create">Add Report</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('overviewChart').getContext('2d');
+    const overviewChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Employees', 'Departments'],
+            datasets: [{
+                label: 'Count',
+                data: [@ViewBag.EmployeeCount, @ViewBag.DepartmentCount],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>

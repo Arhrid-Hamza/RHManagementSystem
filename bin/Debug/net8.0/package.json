@@ -1,0 +1,9 @@
+{
+  "name": "rhmanagementsystem-client",
+  "version": "1.0.0",
+  "description": "Client-side dependencies for RHManagementSystem",
+  "private": true,
+  "dependencies": {
+    "sweetalert2": "^11.10.1"
+  }
+}

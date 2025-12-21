@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Profile";
+    var user = ViewBag.User;
+    var userType = ViewBag.UserType;
+}
+
+<div style="font-family: Arial, sans-serif; background-color: #f4f4f4; min-height: 100vh; padding: 20px;">
+    <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <h2 style="text-align: center; margin-bottom: 20px;">Profile</h2>
+        @if (user != null)
+        {
+            <div style="margin-bottom: 20px;">
+                <strong>Name:</strong> @user.Name
+            </div>
+            <div style="margin-bottom: 20px;">
+                <strong>Email:</strong> @(userType == "User" ? user.Email : user.Mail)
+            </div>
+            <div style="margin-bottom: 20px;">
+                <strong>Role:</strong> @user.Role
+            </div>
+            <div style="text-align: center;">
+                <a href="/UsersMVC/Edit/@(userType == "User" ? user.UserId : user.EmployeeId)" style="padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">Edit Profile</a>
+            </div>
+        }
+        else
+        {
+            <p>User not found.</p>
+        }
+    </div>
+</div>

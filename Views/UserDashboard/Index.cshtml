@@ -1,0 +1,57 @@
+﻿﻿﻿@{
+    ViewData["Title"] = "User Dashboard";
+}
+
+<div class="page-container">
+    <div class="page-header">
+        <h1>User Dashboard</h1>
+        <a href="/UserDashboard/Logout" class="btn btn-primary">Logout</a>
+    </div>
+    <h3>Welcome, @Context.Session.GetString("UserName")</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Profile</td>
+                <td>View and manage your profile information</td>
+                <td>
+                    <a href="/Profile" class="btn-edit">View Profile</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Employees</td>
+                <td>View and manage employee records</td>
+                <td>
+                    <a href="/EmployeesMVC" class="btn-edit">View Employees</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Departments</td>
+                <td>View and manage department information</td>
+                <td>
+                    <a href="/DepartmentsMVC" class="btn-edit">View Departments</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Projects</td>
+                <td>View and manage project details</td>
+                <td>
+                    <a href="/ProjectsMVC" class="btn-edit">View Projects</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Reports</td>
+                <td>View and generate reports</td>
+                <td>
+                    <a href="/ReportsMVC" class="btn-edit">View Reports</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
