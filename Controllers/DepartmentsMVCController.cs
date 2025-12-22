@@ -38,6 +38,7 @@ namespace RHManagementSystem.Controllers
             {
                 _context.Add(department);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Department created successfully!";
                 return RedirectToAction(nameof(Index));
             }
             return View(department);
@@ -85,6 +86,7 @@ namespace RHManagementSystem.Controllers
                         throw;
                     }
                 }
+                TempData["SuccessMessage"] = "Department updated successfully!";
                 return RedirectToAction(nameof(Index));
             }
             return View(department);
@@ -129,6 +131,7 @@ namespace RHManagementSystem.Controllers
             var department = await _context.Departments.FindAsync(id);
             _context.Departments.Remove(department);
             await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Department deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
 

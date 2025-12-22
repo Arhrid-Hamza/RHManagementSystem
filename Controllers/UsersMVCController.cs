@@ -77,6 +77,7 @@ namespace RHManagementSystem.Controllers
                         await _context.SaveChangesAsync();
                     }
                 }
+                TempData["SuccessMessage"] = "User updated successfully!";
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
@@ -145,6 +146,7 @@ namespace RHManagementSystem.Controllers
                         throw;
                     }
                 }
+                TempData["SuccessMessage"] = "User created successfully!";
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
@@ -181,6 +183,7 @@ namespace RHManagementSystem.Controllers
                 _context.Employees.Remove(employee);
                 await _context.SaveChangesAsync();
             }
+            TempData["SuccessMessage"] = "User deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
 

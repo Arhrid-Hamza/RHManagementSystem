@@ -38,6 +38,7 @@ namespace RHManagementSystem.Controllers
             {
                 _context.Add(report);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Report created successfully!";
                 return RedirectToAction(nameof(Index));
             }
             return View(report);
@@ -85,8 +86,25 @@ namespace RHManagementSystem.Controllers
                         throw;
                     }
                 }
+                TempData["SuccessMessage"] = "Report updated successfully!";
                 return RedirectToAction(nameof(Index));
             }
+            return View(report);
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var report = await _context.Reports.FindAsync(id);
+            if (report == null)
+            {
+                return NotFound();
+            }
+
             return View(report);
         }
 
@@ -113,6 +131,7 @@ namespace RHManagementSystem.Controllers
             var report = await _context.Reports.FindAsync(id);
             _context.Reports.Remove(report);
             await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Report deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
 

@@ -50,6 +50,19 @@
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <text>
+                Swal.fire({
+                    title: 'Success!',
+                    text: '@TempData["SuccessMessage"]',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    position: 'top'
+                });
+                </text>
+            }
+
             const deleteButtons = document.querySelectorAll('.btn-delete');
             deleteButtons.forEach(button => {
                 button.addEventListener('click', function (e) {
@@ -62,7 +75,8 @@
                         showCancelButton: true,
                         confirmButtonColor: '#d33',
                         cancelButtonColor: '#3085d6',
-                        confirmButtonText: 'Yes, delete it!'
+                        confirmButtonText: 'Yes, delete it!',
+                        position: 'top'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             window.location.href = url;

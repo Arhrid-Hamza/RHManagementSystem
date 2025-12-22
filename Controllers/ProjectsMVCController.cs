@@ -43,6 +43,7 @@ namespace RHManagementSystem.Controllers
             {
                 _context.Add(project);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Project created successfully!";
                 return RedirectToAction(nameof(Index));
             }
             ViewBag.DepartmentResponsible = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Departments, "DepartmentId", "Name", project.DepartmentResponsible);
@@ -94,6 +95,7 @@ namespace RHManagementSystem.Controllers
                         throw;
                     }
                 }
+                TempData["SuccessMessage"] = "Project updated successfully!";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DepartmentResponsible"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Departments, "DepartmentId", "Name", project.DepartmentResponsible);
@@ -146,6 +148,7 @@ namespace RHManagementSystem.Controllers
             var project = await _context.Projects.FindAsync(id);
             _context.Projects.Remove(project);
             await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Project deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
 

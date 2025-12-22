@@ -70,6 +70,7 @@ namespace RHManagementSystem.Controllers
             {
                 _context.Add(employee);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Employee created successfully!";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["Departments"] = await _context.Departments.ToListAsync();
@@ -121,6 +122,7 @@ namespace RHManagementSystem.Controllers
                         throw;
                     }
                 }
+                TempData["SuccessMessage"] = "Employee updated successfully!";
                 return RedirectToAction(nameof(Index));
             }
             return View(employee);
@@ -147,6 +149,7 @@ namespace RHManagementSystem.Controllers
             var employee = await _context.Employees.FindAsync(id);
             _context.Employees.Remove(employee);
             await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Employee deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
 
