@@ -76,10 +76,16 @@
                         confirmButtonColor: '#d33',
                         cancelButtonColor: '#3085d6',
                         confirmButtonText: 'Yes, delete it!',
-                        position: 'top'
+                        cancelButtonText: 'No, cancel!'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             window.location.href = url;
+                        } else if (result.dismiss === Swal.DismissReason.cancel) {
+                            Swal.fire(
+                                'Cancelled',
+                                'The report is safe :)',
+                                'error'
+                            );
                         }
                     });
                 });

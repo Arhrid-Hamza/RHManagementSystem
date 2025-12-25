@@ -4,6 +4,6 @@
   "description": "Client-side dependencies for RHManagementSystem",
   "private": true,
   "dependencies": {
-    "sweetalert2": "^11.10.1"
+    "sweetalert2": "^11.26.17"
   }
 }

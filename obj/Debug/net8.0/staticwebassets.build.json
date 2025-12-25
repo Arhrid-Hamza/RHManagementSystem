@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WTHpFDtZvCiojstOeJk+ylphRvbmMrEm3EMcXjpoKAg=",
+  "Hash": "KjTNDGuwRhA4IO5IQyx8Vyx/bSS0PVlU49ckLkCX2io=",
   "Source": "RHManagementSystem",
   "BasePath": "_content/RHManagementSystem",
   "Mode": "Default",
@@ -1193,6 +1193,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\itsme\\OneDrive\\Bureau\\React_project\\RH_Management_System-master\\RHManagementSystem\\wwwroot\\lib\\sweetalert2\\sweetalert2.min.css",
+      "SourceId": "RHManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\itsme\\OneDrive\\Bureau\\React_project\\RH_Management_System-master\\RHManagementSystem\\wwwroot\\",
+      "BasePath": "_content/RHManagementSystem",
+      "RelativePath": "lib/sweetalert2/sweetalert2.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\sweetalert2\\sweetalert2.min.css"
     },
     {
       "Identity": "C:\\Users\\itsme\\OneDrive\\Bureau\\React_project\\RH_Management_System-master\\RHManagementSystem\\wwwroot\\lib\\sweetalert2\\sweetalert2.min.js",

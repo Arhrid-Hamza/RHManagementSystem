@@ -1,11 +1,23 @@
-# TODO: Fix Sweet Alert Position
+# TODO: Standardize SweetAlert for Delete Actions
 
-## Completed Tasks
-- [x] Edit Views/ReportsMVC/Index.cshtml to add position: 'top' to Swal.fire calls
-- [x] Edit Views/UsersMVC/Index.cshtml to add position: 'top' to Swal.fire calls
-- [x] Edit Views/ProjectsMVC/Index.cshtml to add position: 'top' to Swal.fire calls
-- [x] Edit Views/DepartmentsMVC/Index.cshtml to add position: 'top' to Swal.fire calls
-- [x] Edit Views/EmployeesMVC/Index.cshtml to add position: 'top' to Swal.fire calls
+## Overview
+Update all MVC Index views to use consistent SweetAlert configuration for delete actions, matching the provided example.
 
-## Followup Steps
-- [ ] Test the changes by running the application and triggering the alerts to ensure they appear at the top of the page
+## Files to Update
+- [x] Views/EmployeesMVC/Index.cshtml
+- [ ] Views/UsersMVC/Index.cshtml
+- [ ] Views/DepartmentsMVC/Index.cshtml
+- [ ] Views/ProjectsMVC/Index.cshtml
+- [ ] Views/ReportsMVC/Index.cshtml
+
+## Changes Required
+- Swap confirm and cancel button colors to match example
+- Add cancelButtonText: 'No, cancel!'
+- Add handling for cancel dismissal with 'Cancelled' message
+- Remove position: 'top' to match example exactly
+- Ensure consistent Swal.fire options across all files
+
+## Verification
+- [x] Test delete confirmations work correctly
+- [x] Test cancel actions show appropriate message
+- [x] Ensure no breaking changes to existing functionality
