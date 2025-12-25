@@ -1,0 +1,36 @@
+@model IEnumerable<RHManagementSystem.Models.User>
+
+@{
+    ViewData["Title"] = "Profile";
+    var user = ViewBag.User;
+    var userType = ViewBag.UserType;
+}
+
+<div class="page-container">
+    <div class="card">
+        <div class="card-header">
+            <h2>Profile</h2>
+        </div>
+        <div class="card-body">
+            @if (user != null)
+            {
+                <div class="mb-3">
+                    <strong>Name:</strong> @user.Name
+                </div>
+                <div class="mb-3">
+                    <strong>Email:</strong> @(userType == "User" ? user.Email : user.Mail)
+                </div>
+                <div class="mb-3">
+                    <strong>Role:</strong> @user.Role
+                </div>
+                <div class="text-center">
+                    <a asp-action="Edit" asp-route-id="@(userType == "User" ? user.UserId : user.EmployeeId)" class="btn btn-primary">Edit Profile</a>
+                </div>
+            }
+            else
+            {
+                <p>User not found.</p>
+            }
+        </div>
+    </div>
+</div>
