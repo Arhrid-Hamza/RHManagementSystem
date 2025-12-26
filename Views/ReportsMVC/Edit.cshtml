@@ -7,36 +7,39 @@
 <div class="page-container">
     <div class="page-header">
         <h1>Edit Report</h1>
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
     </div>
 
-    <h4>Report</h4>
-    <hr />
     <div class="row">
         <div class="col-md-4">
             <form asp-action="Edit">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="ReportId" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
                 <div class="form-group">
                     <label asp-for="Title" class="control-label"></label>
                     <input asp-for="Title" class="form-control" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
+
                 <div class="form-group">
                     <label asp-for="GeneratedBy" class="control-label"></label>
                     <input asp-for="GeneratedBy" class="form-control" />
                     <span asp-validation-for="GeneratedBy" class="text-danger"></span>
                 </div>
+
                 <div class="form-group">
                     <label asp-for="Date" class="control-label"></label>
                     <input asp-for="Date" class="form-control" type="date" />
                     <span asp-validation-for="Date" class="text-danger"></span>
                 </div>
+
                 <div class="form-group">
                     <label asp-for="Content" class="control-label"></label>
                     <textarea asp-for="Content" class="form-control" rows="5"></textarea>
                     <span asp-validation-for="Content" class="text-danger"></span>
                 </div>
+
                 <div class="form-group">
                     <input type="submit" value="Save" class="btn btn-primary" />
                 </div>

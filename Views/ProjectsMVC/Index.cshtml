@@ -5,69 +5,42 @@
 }
 
 <div class="page-container">
-    <div class="page-header">
+    <div class="d-flex justify-content-between align-items-center mb-3">
         <h1>Projects</h1>
-        <a asp-action="Create" class="btn btn-primary">Create New</a>
+        <a asp-action="Create" class="btn btn-primary">+Create New</a>
     </div>
-    <table class="table">
+
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th>
-                    ProjectId
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Description
-                </th>
-                <th>
-                    Department Responsible
-                </th>
-                <th>
-                    Employee Responsible
-                </th>
-                <th>
-                    Start Date
-                </th>
-                <th>
-                    End Date
-                </th>
-                <th>Actions</th>
+                <th class="text-dark">Project ID</th>
+                <th class="text-dark">Name</th>
+                <th class="text-dark">Description</th>
+                <th class="text-dark">Department Responsible</th>
+                <th class="text-dark">Employee Responsible</th>
+                <th class="text-dark">Start Date</th>
+                <th class="text-dark">End Date</th>
+                <th class="text-dark">Actions</th>
             </tr>
         </thead>
         <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @item.ProjectId
-                </td>
-                <td>
-                    @item.Name
-                </td>
-                <td>
-                    @item.Description
-                </td>
-                <td>
-                    @item.DepartmentResponsibleNavigation?.Name 
-                </td>
-                <td>
-                    @item.EmployeeResponsibleNavigation?.Name 
-                </td>
-                <td>
-                    @item.StartDate?.ToShortDateString() 
-                </td>
-                <td>
-                    @item.EndDate?.ToShortDateString()
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ProjectId" class="btn-edit">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.ProjectId" class="btn-show">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.ProjectId" class="btn-delete">Delete</a>
-                </td>
-            </tr>
-        }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProjectId</td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.DepartmentResponsibleNavigation?.Name</td>
+                    <td>@item.EmployeeResponsibleNavigation?.Name</td>
+                    <td>@item.StartDate?.ToShortDateString()</td>
+                    <td>@item.EndDate?.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ProjectId" class="btn btn-edit btn-sm btn-warning">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.ProjectId" class="btn btn-show btn-sm btn-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.ProjectId" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
@@ -88,7 +61,7 @@
                 </text>
             }
 
-            const deleteButtons = document.querySelectorAll('.btn-delete');
+            const deleteButtons = document.querySelectorAll('.btn-danger');
             deleteButtons.forEach(button => {
                 button.addEventListener('click', function (e) {
                     e.preventDefault();

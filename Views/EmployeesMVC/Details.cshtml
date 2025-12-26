@@ -1,52 +1,40 @@
 @model RHManagementSystem.Models.Employee
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Employee Details";
 }
 
-<div class="page-container">
-    <div class="page-header">
-        <h1>Details</h1>
+<div class="container-fluid py-4">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+        <h2 class="fw-semibold mb-0">Employee Details</h2>
         <div>
-            <a asp-action="Edit" asp-route-id="@Model.EmployeeId" class="btn-edit">Edit</a>
-            <a asp-action="Index" class="btn btn-primary">Back to List</a>
+            <a asp-action="Edit" asp-route-id="@Model.EmployeeId" class="btn-edit btn btn-outline-primary me-2">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
         </div>
     </div>
 
-    <div>
-        <h4>Employee</h4>
-        <hr />
-        <dl class="row">
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.EmployeeId)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.EmployeeId)
-            </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Mail)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Mail)
-            </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Role)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Role)
-            </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Department)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Department)
-            </dd>
-        </dl>
+    <!-- Details Card -->
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h5 class="card-title text-primary mb-3">Employee Information</h5>
+            <dl class="row mb-0">
+                <dt class="col-sm-3">Employee ID</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.EmployeeId)</dd>
+
+                <dt class="col-sm-3">Name</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Mail)</dd>
+
+                <dt class="col-sm-3">Role</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Role)</dd>
+
+                <dt class="col-sm-3">Department</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Department)</dd>
+            </dl>
+        </div>
     </div>
 </div>

@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RHManagementSystem.Data;
 using RHManagementSystem.Models;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RHManagementSystem.Controllers
@@ -24,6 +24,7 @@ namespace RHManagementSystem.Controllers
             {
                 return RedirectToAction("Index", "UserDashboard");
             }
+
             var users = await _context.Users.ToListAsync();
             return View(users);
         }
@@ -33,21 +34,30 @@ namespace RHManagementSystem.Controllers
         {
             var userRole = HttpContext.Session.GetString("UserRole");
             var userIdString = HttpContext.Session.GetString("UserId");
+
+            // Only admin or the user himself can view
             if (userRole != "admin" && (string.IsNullOrEmpty(userIdString) || long.Parse(userIdString) != id))
             {
                 return RedirectToAction("Index", "UserDashboard");
             }
+
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
+
             return View(user);
         }
 
         // GET: Users/Create
         public IActionResult Create()
         {
+            var userRole = HttpContext.Session.GetString("UserRole");
+            if (userRole != "admin")
+            {
+                return RedirectToAction("Index", "UserDashboard");
+            }
             return View();
         }
 
@@ -61,12 +71,14 @@ namespace RHManagementSystem.Controllers
             {
                 return RedirectToAction("Index", "UserDashboard");
             }
+
             if (ModelState.IsValid)
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-                // Sync role to employee
-                if (user.Role != null)
+
+                // Sync role to employee if exists
+                if (!string.IsNullOrEmpty(user.Role))
                 {
                     var employeeRole = user.Role.ToLower() == "user" ? "employee" : user.Role.ToLower();
                     var employee = await _context.Employees.FindAsync(user.UserId);
@@ -77,26 +89,31 @@ namespace RHManagementSystem.Controllers
                         await _context.SaveChangesAsync();
                     }
                 }
-                TempData["SuccessMessage"] = "User updated successfully!";
+
+                TempData["SuccessMessage"] = "User created successfully!";
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
         }
 
         // GET: Users/Edit/5
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(long id)
         {
             var userRole = HttpContext.Session.GetString("UserRole");
             var userIdString = HttpContext.Session.GetString("UserId");
+
+            // Only admin or the user himself can edit
             if (userRole != "admin" && (string.IsNullOrEmpty(userIdString) || long.Parse(userIdString) != id))
             {
                 return RedirectToAction("Index", "UserDashboard");
             }
+
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
+
             return View(user);
         }
 
@@ -107,10 +124,12 @@ namespace RHManagementSystem.Controllers
         {
             var userRole = HttpContext.Session.GetString("UserRole");
             var userIdString = HttpContext.Session.GetString("UserId");
+
             if (userRole != "admin" && (string.IsNullOrEmpty(userIdString) || long.Parse(userIdString) != id))
             {
                 return RedirectToAction("Index", "UserDashboard");
             }
+
             if (id != user.UserId)
             {
                 return NotFound();
@@ -122,8 +141,9 @@ namespace RHManagementSystem.Controllers
                 {
                     _context.Update(user);
                     await _context.SaveChangesAsync();
-                    // Sync role to employee
-                    if (user.Role != null)
+
+                    // Sync role to employee if exists
+                    if (!string.IsNullOrEmpty(user.Role))
                     {
                         var employeeRole = user.Role.ToLower() == "user" ? "employee" : user.Role.ToLower();
                         var employee = await _context.Employees.FindAsync(user.UserId);
@@ -146,9 +166,11 @@ namespace RHManagementSystem.Controllers
                         throw;
                     }
                 }
-                TempData["SuccessMessage"] = "User created successfully!";
+
+                TempData["SuccessMessage"] = "User updated successfully!";
                 return RedirectToAction(nameof(Index));
             }
+
             return View(user);
         }
 
@@ -160,11 +182,13 @@ namespace RHManagementSystem.Controllers
             {
                 return RedirectToAction("Index", "UserDashboard");
             }
+
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
+
             return View(user);
         }
 
@@ -174,15 +198,20 @@ namespace RHManagementSystem.Controllers
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
             var user = await _context.Users.FindAsync(id);
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-            // Delete corresponding employee
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+            }
+
+            // Delete corresponding employee if exists
             var employee = await _context.Employees.FindAsync(id);
             if (employee != null)
             {
                 _context.Employees.Remove(employee);
                 await _context.SaveChangesAsync();
             }
+
             TempData["SuccessMessage"] = "User deleted successfully!";
             return RedirectToAction(nameof(Index));
         }

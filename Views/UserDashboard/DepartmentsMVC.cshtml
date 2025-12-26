@@ -1,0 +1,26 @@
+@model IEnumerable<RHManagementSystem.Models.Department>
+
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<h2>Departments</h2>
+<p>All department information is displayed here.</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dept in Model)
+        {
+            <tr>
+                <td>@dept.DepartmentId</td>
+                <td>@dept.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

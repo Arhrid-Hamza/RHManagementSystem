@@ -1,45 +1,58 @@
 @model RHManagementSystem.Models.Department
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Delete Department";
 }
 
-<div class="page-container">
-    <div class="page-header">
-        <h1>Delete</h1>
-        <a asp-action="Index">Back to List</a>
+<div class="container-fluid py-4">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+        <h2 class="fw-semibold mb-0">Delete Department</h2>
+        <a asp-action="Index" class="btn btn-secondary btn-sm">Back to List</a>
     </div>
 
-    <h3>Are you sure you want to delete this?</h3>
+    <!-- Confirmation Card -->
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h5 class="card-title mb-3 text-danger">Are you sure you want to delete this?</h5>
 
-    <div>
-        <h4>Department</h4>
-        <hr />
-        <dl class="row">
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.DepartmentId)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.DepartmentId)
-            </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-        </dl>
+            <dl class="row">
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.DepartmentId)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.DepartmentId)</dd>
 
-        <form asp-action="Delete">
-            @Html.AntiForgeryToken()
-            <input type="hidden" asp-for="DepartmentId" />
-            <input type="submit" value="Delete" class="btn btn-danger" />
-        </form>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Name)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Name)</dd>
+
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Description)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Description)</dd>
+            </dl>
+
+            <form asp-action="Delete" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="DepartmentId" />
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+            </form>
+        </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <text>
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: '@TempData["SuccessMessage"]',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    position: 'top'
+                });
+                </text>
+            }
+        });
+    </script>
+}

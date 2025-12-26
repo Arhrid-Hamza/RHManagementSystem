@@ -1,63 +1,47 @@
 @model RHManagementSystem.Models.Project
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Project Details";
 }
 
 <div class="page-container">
-    <div class="page-header">
-        <h1>Details</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+        <h2 class="fw-semibold mb-0">Project Details</h2>
         <div>
-            <a asp-action="Edit" asp-route-id="@Model.ProjectId" class="btn-edit">Edit</a>
-            <a asp-action="Index" class="btn btn-primary">Back to List</a>
+            <a asp-action="Edit" asp-route-id="@Model.ProjectId" class="btn btn-primary btn-sm me-2">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary btn-sm">Back to List</a>
         </div>
     </div>
 
-    <div>
-        <h4>Project</h4>
-        <hr />
+    <div class="card shadow-sm p-3">
         <dl class="row">
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.ProjectId)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.ProjectId)
+            <dt class="col-sm-2 text-dark">@Html.DisplayNameFor(model => model.ProjectId)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.ProjectId)</dd>
+
+            <dt class="col-sm-2 text-dark">@Html.DisplayNameFor(model => model.Name)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Name)</dd>
+
+            <dt class="col-sm-2 text-dark">@Html.DisplayNameFor(model => model.Description)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Description)</dd>
+
+            <dt class="col-sm-2 text-dark">@Html.DisplayNameFor(model => model.DepartmentResponsible)</dt>
+            <dd class="col-sm-10">
+                @(Model.DepartmentResponsibleNavigation != null ? Model.DepartmentResponsibleNavigation.Name : "")
             </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Name)
+
+            <dt class="col-sm-2 text-dark">@Html.DisplayNameFor(model => model.EmployeeResponsible)</dt>
+            <dd class="col-sm-10">
+                @(Model.EmployeeResponsibleNavigation != null ? Model.EmployeeResponsibleNavigation.Name : "")
             </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Description)
+
+            <dt class="col-sm-2 text-dark">@Html.DisplayNameFor(model => model.StartDate)</dt>
+            <dd class="col-sm-10">
+                @(Model.StartDate.HasValue ? Model.StartDate.Value.ToShortDateString() : "")
             </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.DepartmentResponsible)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.DepartmentResponsible)
-            </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.EmployeeResponsible)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.EmployeeResponsible)
-            </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.StartDate)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.StartDate)
-            </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.EndDate)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.EndDate)
+
+            <dt class="col-sm-2 text-dark">@Html.DisplayNameFor(model => model.EndDate)</dt>
+            <dd class="col-sm-10">
+                @(Model.EndDate.HasValue ? Model.EndDate.Value.ToShortDateString() : "")
             </dd>
         </dl>
     </div>

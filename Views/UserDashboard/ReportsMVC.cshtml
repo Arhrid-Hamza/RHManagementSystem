@@ -1,0 +1,28 @@
+@model IEnumerable<RHManagementSystem.Models.Report>
+
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<h2>Reports</h2>
+<p>All report summaries are displayed here.</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rep in Model)
+        {
+            <tr>
+                <td>@rep.ReportId</td>
+                <td>@rep.Title</td>
+                <td>@rep.Date.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

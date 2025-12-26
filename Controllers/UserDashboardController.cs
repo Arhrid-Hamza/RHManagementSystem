@@ -13,6 +13,11 @@ namespace RHManagementSystem.Controllers
             return View();
         }
 
+        public IActionResult Employees() => View();
+        public IActionResult Departments() => View();
+        public IActionResult Projects() => View();
+        public IActionResult Reports() => View();
+
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();

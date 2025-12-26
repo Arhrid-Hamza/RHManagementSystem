@@ -1,0 +1,26 @@
+@model IEnumerable<RHManagementSystem.Models.Project>
+
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<h2>Projects</h2>
+<p>All project details are displayed here.</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var proj in Model)
+        {
+            <tr>
+                <td>@proj.ProjectId</td>
+                <td>@proj.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -147,9 +147,12 @@ namespace RHManagementSystem.Controllers
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
             var employee = await _context.Employees.FindAsync(id);
-            _context.Employees.Remove(employee);
-            await _context.SaveChangesAsync();
-            TempData["SuccessMessage"] = "Employee deleted successfully!";
+            if (employee != null)
+            {
+                _context.Employees.Remove(employee);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Employee deleted successfully!";
+            }
             return RedirectToAction(nameof(Index));
         }
 

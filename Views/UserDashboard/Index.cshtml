@@ -1,15 +1,20 @@
-﻿﻿﻿@{
+﻿﻿@{
     ViewData["Title"] = "User Dashboard";
+    var userName = Context.Session.GetString("UserName");
+    var userId = Context.Session.GetString("UserId");
 }
 
 <div class="page-container">
-    <div class="page-header">
+    <!-- Header -->
+    <div class="page-header d-flex justify-content-between align-items-center mb-4">
         <h1>User Dashboard</h1>
-        <a href="/UserDashboard/Logout" class="btn btn-primary">Logout</a>
+        <a href="/UserDashboard/Logout" class="btn btn-danger btn-sm">Logout</a>
     </div>
-    <h3>Welcome, @Context.Session.GetString("UserName")</h3>
-    <table class="table">
-        <thead>
+
+    <h4 class="mb-4">Welcome, <strong>@userName</strong></h4>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-light">
             <tr>
                 <th>Feature</th>
                 <th>Description</th>
@@ -19,37 +24,37 @@
         <tbody>
             <tr>
                 <td>Profile</td>
-                <td>View and manage your profile information</td>
+                <td>Edit your profile information</td>
                 <td>
-                    <a href="/Profile" class="btn-edit">View Profile</a>
+                    <a href="/UsersMVC/Edit/@userId" class="btn btn-primary btn-sm">Edit Profile</a>
                 </td>
             </tr>
             <tr>
                 <td>Employees</td>
-                <td>View and manage employee records</td>
+                <td>View employee records</td>
                 <td>
-                    <a href="/EmployeesMVC" class="btn-edit">View Employees</a>
+                    <a href="/UserDashboard/EmployeesMVC" class="btn btn-secondary btn-sm">View Employees</a>
                 </td>
             </tr>
             <tr>
                 <td>Departments</td>
-                <td>View and manage department information</td>
+                <td>View department information</td>
                 <td>
-                    <a href="/DepartmentsMVC" class="btn-edit">View Departments</a>
+                    <a href="/UserDashboard/DepartmentsMVC" class="btn btn-secondary btn-sm">View Departments</a>
                 </td>
             </tr>
             <tr>
                 <td>Projects</td>
-                <td>View and manage project details</td>
+                <td>View project details</td>
                 <td>
-                    <a href="/ProjectsMVC" class="btn-edit">View Projects</a>
+                    <a href="/UserDashboard/ProjectsMVC" class="btn btn-secondary btn-sm">View Projects</a>
                 </td>
             </tr>
             <tr>
                 <td>Reports</td>
-                <td>View and generate reports</td>
+                <td>View report summaries</td>
                 <td>
-                    <a href="/ReportsMVC" class="btn-edit">View Reports</a>
+                    <a href="/UserDashboard/ReportsMVC" class="btn btn-secondary btn-sm">View Reports</a>
                 </td>
             </tr>
         </tbody>
