@@ -134,8 +134,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/itsme/OneDrive/Bureau/React_project/RH_Management_System-master/RHManagementSystem/Views/UserDashboard/DepartmentsMVC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckRhc2hib2FyZFxEZXBhcnRtZW50c01WQy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/itsme/OneDrive/Bureau/React_project/RH_Management_System-master/RHManagementSystem/Views/UserDashboard/EmployeesMVC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckRhc2hib2FyZFxFbXBsb3llZXNNVkMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/itsme/OneDrive/Bureau/React_project/RH_Management_System-master/RHManagementSystem/Views/UserDashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckRhc2hib2FyZFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/itsme/OneDrive/Bureau/React_project/RH_Management_System-master/RHManagementSystem/Views/UserDashboard/ProjectsMVC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckRhc2hib2FyZFxQcm9qZWN0c01WQy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/itsme/OneDrive/Bureau/React_project/RH_Management_System-master/RHManagementSystem/Views/UserDashboard/ReportsMVC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckRhc2hib2FyZFxSZXBvcnRzTVZDLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/itsme/OneDrive/Bureau/React_project/RH_Management_System-master/RHManagementSystem/Views/UsersMVC/Create.cshtml]
